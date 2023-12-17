@@ -869,13 +869,15 @@ public class GameScreen implements Screen {
 
         GameScreen.player.start = 4;
 
-        buildingObject.setBuilding(building);
-        if(building instanceof Block){
-            buildingObject.nButtons.get(0).setValue(building.getRect().getWidth());
-            buildingObject.nButtons.get(1).setValue(building.getRect().getHeight());
-            buildingObject.nButtons.get(2).setValue(building.getRect().getzSize());
+        if(building != null) {
+            buildingObject.setBuilding(building);
+            if (building instanceof Block) {
+                buildingObject.nButtons.get(0).setValue(building.getRect().getWidth());
+                buildingObject.nButtons.get(1).setValue(building.getRect().getHeight());
+                buildingObject.nButtons.get(2).setValue(building.getRect().getzSize());
+            }
+            building.getRect().setMaterial(false);
         }
-        building.getRect().setMaterial(false);
     }
 
     public static final int mapSize = 70;

@@ -2042,24 +2042,36 @@ public class Creature extends MyActor implements MovableObject, WithInventory {
         agility = maxAgility;
     }
 
+    private int prevHp = 0;
     private void updateHpBar(){
-        hpBar = generateBar(hpBar, hp, maxHp, Color.GREEN);
+        if((int)(hp * 40 / maxHp) != prevHp) {
+            prevHp = (int) (hp * 40 / maxHp);
+            hpBar = generateBar(hpBar, hp, maxHp, Color.GREEN);
+        }
     }
 
     private Texture waterBar;
     private Texture satietyBar;
+    private int prevWater = 0;
     public void updateWaterBar(int water1){
         water += water1;
         water = Math.min(water, maxWater);
 
-        waterBar = generateBar(waterBar, water, maxWater, Color.CYAN);
+        if((int)((float) water * 40 / maxWater) != prevWater) {
+            prevWater = (int) ((float) water * 40 / maxWater);
+            waterBar = generateBar(waterBar, water, maxWater, Color.CYAN);
+        }
     }
 
+    private int prevSat = 0;
     private void updateSatietyBar(int satiety1){
         satiety += satiety1;
         satiety = Math.min(satiety, maxSatiety);
 
-        satietyBar = generateBar(satietyBar, satiety, maxSatiety, Color.ORANGE);
+        if((int)((float)satiety * 40 / maxSatiety) != prevSat) {
+            prevSat = (int)((float) satiety * 40 / maxSatiety);
+            satietyBar = generateBar(satietyBar, satiety, maxSatiety, Color.ORANGE);
+        }
     }
 
     private final Pixmap pm = new Pixmap(40, 4, Pixmap.Format.RGBA4444);

@@ -149,9 +149,6 @@ public class Obstacle extends MyActor implements StaticObject {
     }
     private float lastZ;
     private float zSpeed;
-    @Override
-    public void act(float delta) {
-    }
 
     public void updateZ(){
         setVisible(true);
